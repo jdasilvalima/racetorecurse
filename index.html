@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RaceToRecurseCenter</title>
+    <script src="./logic/point2d.js"></script>
+    <script src="./logic/animator.js"></script>
+    <script src="./logic/background.js"></script>
+    <script src="./logic/collider.js"></script>
+    <script src="./logic/movement.js"></script>
+    <script src="./logic/player.js"></script>
+    <script src="./logic/interactiveElement.js"></script>
+    <script src="./logic/spawner.js"></script>
+    <script src="./logic/runnerGame.js"></script>
+    <script src="./logic/timer.js"></script>
+    <script src="./logic/message.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <h1>Race To Recurse Center Game</h1>
+    <p id="game-goal"><b>Goal : </b>Can you make it to the Recurse Center on time?</p>
+    <canvas id="canvas" width="500" height="300"></canvas>
+    <div id="game-message-box"></div>
+    <script>
+
+        // PARAMETERS
+        const playerOptions = {
+            width: 40,
+            height: 60,
+            startX: 40,
+            jumpPower: 15,
+            jumpHeight: 220,
+            gravity: 12,
+            playSpeed: 2,
+            showTime: 5,
+            imageSources: [
+                "./assets/player/player1.png",
+                "./assets/player/player2.png",
+                "./assets/player/player3.png",
+                "./assets/player/player4.png"
+            ]
+        }
+
+        const spawnerOptions = {
+            width: 30,
+            height: 50,
+            minLength: 180,
+            maxlength: 220,
+            speed: 5,
+            maxActive: 2,
+            elements: [
+                InteractiveElement.create(0, 0, 40, 40, true, "./assets/nycPizza.png"), 
+                InteractiveElement.create(0, 0, 30, 40, true, "./assets/iceCreamLover.png"), 
+                InteractiveElement.create(0, 0, 40, 40, true, "./assets/levainCookie.png"),
+                InteractiveElement.create(0, 0, 35, 35, true, "./assets/cuteShiba.png"), 
+                InteractiveElement.create(0, 0, 40, 40, true, "./assets/nycRat.png"), 
+                InteractiveElement.create(0, 0, 80, 110, false, "./assets/theRecurseCenter.png")
+            ]
+        }
+
+        const difficulty = {
+            speedIncreasement: .01,
+            maxIncreasement: 1
+        }
+
+        // INSTANCE OF THE GAME
+        const frameRate = 35;
+        const groundOffset = 20;
+        const endlessRunnerGame = new RunnerGame("canvas", frameRate, groundOffset, playerOptions, spawnerOptions, difficulty);
+
+        endlessRunnerGame.start();
+
+    </script>
+</body>
+</html>

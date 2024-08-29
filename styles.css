@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, #game-goal {
+    text-align: center;
+}
+
+#game-message-box {
+    padding: 10px;
+    font-size: 15px;
+    color: #333;
+    text-align: justify;
+}
